@@ -1,0 +1,27 @@
+<h2>Personne Details</h2>
+<hr />
+<form #myForm="ngForm" (ngSubmit)="editPerson()" *ngIf="personne">
+    <div class="form-group">
+        <label for="nom">Nom:</label>
+        <input class="form-control" type="text" name="nom" [(ngModel)]="personne.nom" required #nom="ngModel">
+    </div>
+    <div [hidden]="nom.valid || nom.pristine">
+        le nom est obligatoire
+    </div>
+    <div class="form-group">
+        <label for="prenom">Prenom:</label>
+        <input class="form-control" type="text" name="prenom" [(ngModel)]="personne.prenom" required #prenom="ngModel"> 
+    </div>
+    <div [hidden]="prenom.valid || prenom.pristine">
+        le prenom est obligatoire
+    </div>
+    <div>
+        <button class="btn btn-success" [disabled]="!myForm.valid">
+            Ajouter
+        </button>
+    </div>
+</form>
+<!-- <button class="btn btn-success" 
+(click)="backToPersonList()">
+    Retour
+</button> -->

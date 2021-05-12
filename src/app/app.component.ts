@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,56 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-project';
+
+  constructor(private router: Router) { }
+
+  tabs: any[] = [
+    {
+      title: 'Accueil',
+      path: 'home'
+    },
+    {
+      title: 'Adresse',
+      path: 'adresse'
+    }, 
+    {
+      title: 'Stagiaire',
+      path: 'stagiaire'
+    },
+    {
+      title: 'Template Form',
+      path: 'template-driven'
+    },
+    {
+      title: 'Reactive Form',
+      path: 'reactive-form'
+    },
+    {
+      title: 'Personne',
+      path: 'personne'
+    },
+    {
+      title: 'Material-Table',
+      path: 'material-table'
+    },
+    {
+      title: 'Camion',
+      path: 'vehicule/camion'
+    },
+    {
+      title: 'Voiture',
+      path: 'vehicule/voiture'
+    }
+  ];
+
+  logOut(){
+    localStorage.removeItem('isConnected');
+    this.router.navigate(['/home']);
+  }
+
+  isConnected(){
+    if(Boolean(localStorage.getItem('isConnected')))
+      return true;
+    return false;
+  }
 }
